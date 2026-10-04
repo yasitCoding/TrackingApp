@@ -110,7 +110,7 @@ export function YearGrid({
                             ? "bg-accent"
                             : future
                               ? "cursor-default bg-white/5"
-                              : "cursor-pointer bg-white/10 hover:bg-white/20"
+                              : "cursor-pointer bg-white/10 transition duration-200 hover:scale-110 hover:bg-white/30"
                         } ${cell.iso === today ? "outline outline-1 outline-offset-1 outline-accent" : ""}`}
                       />
                     );

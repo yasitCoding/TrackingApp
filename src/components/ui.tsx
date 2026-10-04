@@ -28,15 +28,17 @@ export function Button({
   variant?: "primary" | "secondary" | "danger" | "ghost";
 }) {
   const styles = {
-    primary: "bg-accent text-on-accent hover:opacity-90",
-    secondary: "bg-fill text-ink hover:bg-fill-strong",
-    danger: "bg-alert text-white hover:opacity-90",
-    ghost: "bg-transparent text-ink hover:underline px-0",
+    primary:
+      "bg-accent text-on-accent shadow-none hover:-translate-y-0.5 hover:bg-[#ff9340] hover:shadow-[0_10px_28px_rgba(255,122,24,0.38)] active:translate-y-0",
+    secondary: "bg-fill text-ink hover:-translate-y-0.5 hover:bg-fill-strong hover:text-white active:translate-y-0",
+    danger:
+      "bg-alert text-white hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_10px_24px_rgba(255,77,58,0.35)] active:translate-y-0",
+    ghost: "bg-transparent text-ink hover:text-accent hover:underline px-0",
   }[variant];
 
   return (
     <button
-      className={`inline-flex h-11 cursor-pointer items-center justify-center rounded-[12px] px-4 text-[15px] font-medium transition disabled:cursor-not-allowed disabled:opacity-40 ${styles} ${className}`}
+      className={`inline-flex h-11 cursor-pointer items-center justify-center rounded-[12px] px-4 text-[15px] font-medium transition duration-200 ease-out disabled:translate-y-0 disabled:cursor-not-allowed disabled:opacity-40 disabled:shadow-none ${styles} ${className}`}
       {...props}
     />
   );

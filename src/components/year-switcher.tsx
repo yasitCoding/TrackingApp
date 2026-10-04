@@ -17,7 +17,7 @@ export function YearSwitcher({
       {canPrev ? (
         <Link
           href={hrefFor(year - 1)}
-          className="flex size-9 items-center justify-center rounded-full bg-fill text-mute"
+          className="flex size-9 items-center justify-center rounded-full bg-fill text-mute transition duration-200 hover:scale-105 hover:bg-accent hover:text-white"
           aria-label="ปีก่อน"
         >
           <IconChevron className="size-4 rotate-180" />
@@ -29,7 +29,7 @@ export function YearSwitcher({
       {canNext ? (
         <Link
           href={hrefFor(year + 1)}
-          className="flex size-9 items-center justify-center rounded-full bg-fill text-mute"
+          className="flex size-9 items-center justify-center rounded-full bg-fill text-mute transition duration-200 hover:scale-105 hover:bg-accent hover:text-white"
           aria-label="ปีถัดไป"
         >
           <IconChevron className="size-4" />

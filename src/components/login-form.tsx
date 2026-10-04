@@ -86,7 +86,7 @@ export function LoginForm() {
 
       <button
         type="button"
-        className="mt-6 cursor-pointer text-left text-[14px] text-ink underline-offset-2 hover:underline"
+        className="mt-6 cursor-pointer text-left text-[14px] text-ink underline-offset-2 transition duration-200 hover:text-accent hover:underline"
         onClick={() => {
           setMode(mode === "signin" ? "signup" : "signin");
           setMessage(null);

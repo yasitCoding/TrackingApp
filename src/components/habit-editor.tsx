@@ -11,14 +11,12 @@ export function HabitEditor({ habit }: { habit: Habit }) {
   const [editing, setEditing] = useState(false);
   const [confirm, setConfirm] = useState(false);
   const [name, setName] = useState(habit.name);
-  const [target, setTarget] = useState(habit.target ?? "");
   const [message, setMessage] = useState<string | null>(null);
 
   async function onSave(event: React.FormEvent) {
     event.preventDefault();
     const formData = new FormData();
     formData.set("name", name);
-    formData.set("target", target);
     const result = await updateHabit(habit.id, formData);
     if (!result.ok) {
       setMessage(result.message);
@@ -44,17 +42,11 @@ export function HabitEditor({ habit }: { habit: Habit }) {
       {editing ? (
         <form onSubmit={onSave} className="space-y-3">
           <TextInput value={name} onChange={(event) => setName(event.target.value)} maxLength={40} />
-          <TextInput
-            value={target}
-            onChange={(event) => setTarget(event.target.value)}
-            placeholder="เป้าหมาย"
-            maxLength={40}
-          />
           <div className="flex gap-4 text-[14px]">
-            <button type="submit" className="cursor-pointer text-accent">
+            <button type="submit" className="cursor-pointer rounded-lg px-2 py-1 text-accent transition duration-200 hover:bg-accent-soft hover:text-white">
               บันทึก
             </button>
-            <button type="button" onClick={() => setEditing(false)} className="cursor-pointer text-mute">
+            <button type="button" onClick={() => setEditing(false)} className="cursor-pointer rounded-lg px-2 py-1 text-mute transition duration-200 hover:bg-white/8 hover:text-white">
               ยกเลิก
             </button>
           </div>
@@ -62,19 +54,19 @@ export function HabitEditor({ habit }: { habit: Habit }) {
       ) : confirm ? (
         <div className="flex flex-wrap items-center gap-4 text-[14px]">
           <p className="text-mute">ลบรายการนี้และวันที่เคยนับด้วย</p>
-          <button type="button" onClick={() => setConfirm(false)} className="cursor-pointer text-mute">
+          <button type="button" onClick={() => setConfirm(false)} className="cursor-pointer rounded-lg px-2 py-1 text-mute transition duration-200 hover:bg-white/8 hover:text-white">
             ยกเลิก
           </button>
-          <button type="button" onClick={onDelete} className="cursor-pointer text-alert">
+          <button type="button" onClick={onDelete} className="cursor-pointer rounded-lg px-2 py-1 text-alert transition duration-200 hover:bg-alert/15 hover:text-white">
             ลบเลย
           </button>
         </div>
       ) : (
         <div className="flex gap-4 text-[14px]">
-          <button type="button" onClick={() => setEditing(true)} className="cursor-pointer text-ink">
+          <button type="button" onClick={() => setEditing(true)} className="cursor-pointer rounded-lg px-2 py-1 text-ink transition duration-200 hover:bg-white/8 hover:text-white">
             แก้ชื่อ
           </button>
-          <button type="button" onClick={() => setConfirm(true)} className="cursor-pointer text-alert">
+          <button type="button" onClick={() => setConfirm(true)} className="cursor-pointer rounded-lg px-2 py-1 text-alert transition duration-200 hover:bg-alert/15 hover:text-white">
             ลบรายการ
           </button>
         </div>

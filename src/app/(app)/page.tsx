@@ -28,10 +28,12 @@ export default async function HomePage() {
         <ul className="divide-y rounded-[16px] border bg-card">
           {habits.map((habit) => (
             <li key={habit.id}>
-              <Link href={`/habits/${habit.id}?year=${year}`} className="flex items-center justify-between gap-4 px-4 py-4">
+              <Link
+                href={`/habits/${habit.id}?year=${year}`}
+                className="flex items-center justify-between gap-4 px-4 py-4 transition duration-200 hover:bg-white/6"
+              >
                 <span>
                   <span className="block text-[17px] font-medium">{habit.name}</span>
-                  {habit.target ? <span className="mt-0.5 block text-[13px] text-faint">{habit.target}</span> : null}
                 </span>
                 <span className="shrink-0 text-[15px] text-accent tabular-nums">{counts.get(habit.id) ?? 0} วัน</span>
               </Link>

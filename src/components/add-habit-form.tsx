@@ -8,7 +8,6 @@ import { Button, Field, TextInput } from "@/components/ui";
 export function AddHabitForm() {
   const router = useRouter();
   const [name, setName] = useState("");
-  const [target, setTarget] = useState("");
   const [message, setMessage] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
 
@@ -19,14 +18,12 @@ export function AddHabitForm() {
     try {
       const formData = new FormData();
       formData.set("name", name);
-      formData.set("target", target);
       const result = await createHabit(formData);
       if (!result.ok) {
         setMessage(result.message);
         return;
       }
       setName("");
-      setTarget("");
       router.refresh();
     } catch (error) {
       console.error("AddHabitForm", error);
@@ -44,17 +41,9 @@ export function AddHabitForm() {
           <TextInput
             value={name}
             onChange={(event) => setName(event.target.value)}
-            placeholder="เช่น นอนตรงเวลา"
+            placeholder="เช่น กินน้ำ 4000ML/day"
             maxLength={40}
             required
-          />
-        </Field>
-        <Field label="เป้าหมาย ถ้ามี">
-          <TextInput
-            value={target}
-            onChange={(event) => setTarget(event.target.value)}
-            placeholder="เช่น 4,000 ml"
-            maxLength={40}
           />
         </Field>
         {message ? <p className="text-[13px] text-alert">{message}</p> : null}
